@@ -29,7 +29,7 @@ export function Contacts({ contacts, removeContact }) {
               data-id={contact.id}
               onClick={handleBtnDelete}
             >
-              <TrashIcon />
+              <TrashIcon onClick={handleBtnDelete} />
             </Button>
           </ListItem>
         );

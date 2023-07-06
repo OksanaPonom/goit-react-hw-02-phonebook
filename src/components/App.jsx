@@ -5,7 +5,7 @@ import { Notify } from 'notiflix';
 import { FormContact } from './FormContact/FormContact';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
-import { MainTitle, Title } from './App.styled';
+import { MainTitle, Title, Message } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -35,14 +35,16 @@ export class App extends Component {
       return;
     }
     this.setState(({ contacts }) => ({ contacts: [newContact, ...contacts] }));
-    Notify.info(`Contact added`);
+    Notify.info(`Contact ${name} added`);
   };
   removeContact = idContact => {
     const contacts = this.state.contacts;
-    const newContacts = contacts.filter(({ id }) => id !== idContact);
 
+    const newContacts = contacts.filter(({ id }) => id !== idContact);
+    const nameUser = contacts.find(({ id }) => id === idContact).name;
     this.setState(({ contacts }) => ({ contacts: newContacts }));
-    // Notify.info(`Contact deleted`);
+
+    Notify.info(`Contact ${nameUser} deleted`);
   };
 
   changeFilter = e => {
@@ -65,8 +67,9 @@ export class App extends Component {
         <MainTitle>Phonebook</MainTitle>
         <FormContact addContact={this.addContact} />
         <Title>Contacts</Title>
-        {this.state.contacts !== [] && (
-          <Filter value={filter} onChange={this.changeFilter} />
+        <Filter value={filter} onChange={this.changeFilter} />
+        {this.state.contacts.length === 0 && (
+          <Message>No contacts available.</Message>
         )}
         <Contacts
           contacts={visibleContacts}

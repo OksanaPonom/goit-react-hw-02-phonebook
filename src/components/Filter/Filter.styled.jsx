@@ -6,7 +6,7 @@ export const Label = styled.label`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 300px;
+  width: 600px;
   font-size: 20px;
   font-weight: 500;
 `;

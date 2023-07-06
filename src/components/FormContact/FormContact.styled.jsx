@@ -33,6 +33,7 @@ export const Input = styled(Field)`
   outline: none;
   border-color: #0000ffe0;
 
+  &:hover,
   &:focus {
     box-shadow: 3px 1px 32px 0px rgba(28, 18, 227, 1);
   }

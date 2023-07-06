@@ -4,14 +4,14 @@ export const List = styled.ul`
   list-style: none;
   margin: 30px auto 60px auto;
   padding: 0;
-  width: 520px;
+  width: 600px;
 `;
 export const ListItem = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  width: 100%;
+  width: 560px;
   height: 70px;
   border-radius: 12px;
   background-color: #9f94ab7f;
@@ -48,4 +48,5 @@ export const TrashIcon = styled(BiSolidTrash)`
   height: 24px;
   width: 24px;
   fill: #000000ae;
+  pointer-events: none;
 `;
