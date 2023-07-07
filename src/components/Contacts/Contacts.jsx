@@ -10,11 +10,6 @@ import {
 } from './Contacts.styled';
 
 export function Contacts({ contacts, removeContact }) {
-  const handleBtnDelete = e => {
-    const id = e.target.getAttribute('data-id');
-
-    removeContact(id);
-  };
   return (
     <List>
       {contacts.map(contact => {
@@ -24,12 +19,8 @@ export function Contacts({ contacts, removeContact }) {
               <Name>{contact.name}:&nbsp;</Name>
               <Number>{contact.number}</Number>
             </p>
-            <Button
-              type="button"
-              data-id={contact.id}
-              onClick={handleBtnDelete}
-            >
-              <TrashIcon onClick={handleBtnDelete} />
+            <Button type="button" onClick={() => removeContact(contact.id)}>
+              <TrashIcon onClick={() => removeContact(contact.id)} />
             </Button>
           </ListItem>
         );

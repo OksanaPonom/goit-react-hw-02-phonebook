@@ -39,12 +39,12 @@ export class App extends Component {
   };
   removeContact = idContact => {
     const contacts = this.state.contacts;
-
-    const newContacts = contacts.filter(({ id }) => id !== idContact);
-    const nameUser = contacts.find(({ id }) => id === idContact).name;
-    this.setState(({ contacts }) => ({ contacts: newContacts }));
-
-    Notify.info(`Contact ${nameUser} deleted`);
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(({ id }) => id !== idContact),
+    }));
+    Notify.info(
+      `Contact ${contacts.find(({ id }) => id === idContact).name} deleted`
+    );
   };
 
   changeFilter = e => {
